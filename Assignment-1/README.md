@@ -186,12 +186,6 @@ Hello, Linux!
 
 ---
 
-# 🖥️ Assignment Screenshot
-
-![Linux Command-Line Practical](./screenshots/linux-command-line.png)
-
----
-
 # 📚 Command Summary
 
 | Task                         | Command                                                |
