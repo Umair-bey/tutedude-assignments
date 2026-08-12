@@ -84,5 +84,3 @@ DevOps Course — Tutedude
 ---
 
 ⭐ This repository will be updated as new assignments are completed.
-
-```
