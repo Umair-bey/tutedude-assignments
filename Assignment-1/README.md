@@ -213,9 +213,11 @@ Hello, Linux!
 **Completed**
 
 **Course:** DevOps
+
 **Assignment:** 1
+
 **Topic:** Linux Basics
+
 **Student:** Umair Khan
 
-```
 ```
