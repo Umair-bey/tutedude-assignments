@@ -1,304 +1,238 @@
-# Python Basics Assignment 2
+# Python Basics — Tutedude Assignment 2
 
-This repository contains my **Tutedude Python Basics Assignment 2**.
+This is Assignment 2 of the Python course by Tutedude.
 
-The assignment focuses on basic Python programming concepts such as conditional statements, dictionaries, user input, loops, and file handling.
+This assignment covers basic Python programming concepts such as conditional statements, dictionaries, user input, loops, and file handling.
+
+---
+
+# 🐍 Python Programming Practical
+
+## Topics Covered
+
+- Taking input and checking grades using `if-elif-else`
+- Creating and managing dictionaries
+- Adding and updating student grades
+- Displaying dictionary contents
+- Writing content to a text file
+- Reading content from a text file
+- Using basic Python file-handling functions
 
 ---
 
-# 📚 Assignment Overview
+# 📋 Assignment Tasks
 
-This assignment contains four main Python tasks:
+## 1. Grade Checker
 
-1. Grade Checker
-2. Student Grades
-3. Write to a File
-4. Read from a File
+Take a score as input and print the grade according to the following conditions:
 
-The repository also contains the complete assignment document and the text file used for file-handling tasks.
-
----
-2. Repository Files
-# 📁 Repository Files
-
-| **File** | **Description** |
-|---|---|
-| `Assignment 2.docx` | Complete assignment document containing explanations, Python code, expected outputs, and screenshots |
-| `assignment1.py` | Python program used for the assignment tasks |
-| `student.txt` | Text file created and used during the file-writing and file-reading tasks |
-| `README.md` | Documentation and overview of this assignment |
-
----
-3. Grade Checker
-# 📝 Assignment 1 – Grade Checker
-
-The Grade Checker program takes a score from the user and assigns a grade based on the following conditions:
-
-| **Score** | **Grade** |
-|---|---|
-| 90 and above | A |
+| Score | Grade |
+| ----- | ----- |
+| 90+ | A |
 | 80–89 | B |
 | 70–79 | C |
 | 60–69 | D |
 | Below 60 | F |
 
-### Concepts Used
+Take a score as input:
 
-- `input()`
-- `int()`
-- `if`
-- `elif`
-- `else`
+score = int(input("Enter your score: "))
 
-### Example
+Check the grade using if-elif-else:
 
-```text
+if score >= 90:
+    print("Grade: A")
+elif score >= 80:
+    print("Grade: B")
+elif score >= 70:
+    print("Grade: C")
+elif score >= 60:
+    print("Grade: D")
+else:
+    print("Grade: F")
+
+Example output:
+
 Enter your score: 85
 Grade: B
+2. Student Grades
 
-### 4. Student Grades
+Create a dictionary to store student names and their grades:
 
-```markdown
-# 👨‍🎓 Assignment 2 – Student Grades
+students = {}
 
-The Student Grades program uses a Python dictionary to store student names and their grades.
+Add a new student and grade:
 
-The program allows the user to:
+name = input("Enter student name: ")
+grade = input("Enter grade: ")
+students[name] = grade
 
-- Add a new student
-- Add a student's grade
-- Update an existing student's grade
-- Check whether a student exists
-- Display all student grades
+Update an existing student's grade:
 
-### Concepts Used
+name = input("Enter student name: ")
 
-- Dictionary
-- Dictionary keys and values
-- `if-elif-else`
-- `in` operator
-- `items()`
-- `for` loop
-- User input
+if name in students:
+    grade = input("Enter new grade: ")
+    students[name] = grade
+    print("Grade updated successfully.")
+else:
+    print("Student not found.")
 
-### Example
+Print all student grades:
 
-```text
+for name, grade in students.items():
+    print(name, ":", grade)
+
+Example output:
+
 Student Grades:
 Umair : A
 Rahul : B
 Aman : A
+Concepts Used
+Dictionary
+Dictionary keys and values
+if-elif-else
+in operator
+items()
+for loop
+User input
+3. Write to a File
 
-### 5. Write to a File
+Create or open a text file in write mode:
 
-```markdown
-# 📄 Assignment 3 – Write to a File
+file = open("student.txt", "w")
 
-This task demonstrates basic Python file handling.
+Write content into the file:
 
-The program creates a text file named:
+file.write("This is my Tutedude assignment.\n")
+file.write("I am learning Python programming.\n")
+file.write("This file was created using Python.")
 
-```text
+Close the file:
+
+file.close()
+
+Complete code:
+
+file = open("student.txt", "w")
+
+file.write("This is my Tutedude assignment.\n")
+file.write("I am learning Python programming.\n")
+file.write("This file was created using Python.")
+
+file.close()
+
+print("Content written to the file successfully.")
+
+Expected output:
+
+Content written to the file successfully.
+
+The program creates a file named:
+
 student.txt
 
-It then writes the following content into the file:
+File content:
 
 This is my Tutedude assignment.
 I am learning Python programming.
 This file was created using Python.
-Concepts Used
-open()
-Write mode "w"
-write()
-close()
+4. Read from a File
 
-The program displays:
+Open the file in read mode:
 
-Content written to the file successfully.
+file = open("student.txt", "r")
 
-### 6. Read from a File
+Read the contents of the file:
 
-```markdown
-# 📖 Assignment 4 – Read from a File
+content = file.read()
 
-This task demonstrates how to read content from an existing text file.
+Display the file contents:
 
-The program opens:
+print("File Content:")
+print(content)
 
-```text
-student.txt
+Close the file:
 
-in read mode and reads its contents using the read() function.
+file.close()
 
-Concepts Used
-open()
-Read mode "r"
-read()
-print()
-close()
-Example Output
+Complete code:
+
+file = open("student.txt", "r")
+
+content = file.read()
+
+print("File Content:")
+print(content)
+
+file.close()
+
+Expected output:
+
 File Content:
 This is my Tutedude assignment.
 I am learning Python programming.
 This file was created using Python.
+📚 Python Concepts Summary
+Task / Concept	Python Function / Operation
+Take input	input()
+Convert input to integer	int()
+Decision making	if / elif / else
+Store student grades	Dictionary
+Add or update grade	students[name] = grade
+Check student existence	in
+Display dictionary contents	items()
+Open or create file	open()
+Write to file	write()
+Read from file	read()
+Close file	close()
+Repeat operations	for / while
+📁 Assignment Files
 
-### 7. Assignment Document
+The repository contains the following files:
 
-```markdown
-# 📄 Assignment Document
+File	Description
+Assignment 2.docx	Complete assignment document containing explanations, Python code, expected outputs, and screenshots
+assignment1.py	Python program used for the assignment tasks
+student.txt	Text file created and used during the file-writing and file-reading tasks
+README.md	Documentation and overview of the assignment
+🛠️ Technologies Used
+Python
+Visual Studio Code
+Git
+GitHub
+🎯 Learning Outcome
 
-## `Assignment 2.docx`
+After completing this assignment, I practiced:
 
-This is the complete Microsoft Word document submitted for the assignment.
-
-It contains:
-
-- Assignment title
-- Student name
-- Course name
-- Task explanations
-- Python code
-- Expected outputs
-- Screenshots
-- Summary of concepts
-- Submission guidelines
-
-The Word document provides the detailed written version of the work included in this repository.
-
----
-8. Python Program
-# 🐍 Python Program
-
-## `assignment1.py`
-
-This file contains the Python code used to perform the assignment tasks.
-
-The programs demonstrate:
-
-- Taking input from the user
-- Conditional statements
-- Grade calculation
-- Dictionary operations
-- Adding and updating student grades
-- Loops
-- File creation
-- Writing to files
-- Reading from files
-
-The file was developed and executed using **Visual Studio Code**.
-
----
-9. Text File
-# 📄 Text File
-
-## `student.txt`
-
-This file is created during the file-handling portion of the assignment.
-
-It contains:
-
-```text
-This is my Tutedude assignment.
-I am learning Python programming.
-This file was created using Python.
-
-The file is used in two tasks:
-
-Write Operation
-
-Python opens the file using:
-
-open("student.txt", "w")
-
-and writes content into it.
-
-Read Operation
-
-Python then opens the same file using:
-
-open("student.txt", "r")
-
-and reads its contents using:
-
-file.read()
-
-### 10. Technologies + Concepts
-
-```markdown
-# 🛠️ Technologies Used
-
-- Python
-- Visual Studio Code
-- Git
-- GitHub
-
----
-
-# 📚 Concepts Practiced
-
-Through this assignment, I practiced the following Python concepts:
-
-- Variables
-- User input
-- Type conversion
-- Conditional statements
-- `if`
-- `elif`
-- `else`
-- Dictionaries
-- Dictionary keys and values
-- Dictionary operations
-- `in` operator
-- `for` loop
-- `items()`
-- File handling
-- File creation
-- Writing to files
-- Reading from files
-- Closing files
-
----
-11. Repository Structure
-# 📂 Repository Structure
-
-```text
+Taking user input
+Type conversion
+Conditional statements
+if, elif, and else
+Dictionaries
+Adding and updating dictionary values
+Checking dictionary keys
+Using loops
+File creation
+Writing to files
+Reading from files
+Closing files
+📂 Repository Structure
 Assignment-2/
 │
 ├── Assignment 2.docx
 ├── assignment1.py
 ├── student.txt
 └── README.md
+✅ Assignment Status
 
-### 12. Learning Outcome + Author + Status
+Completed
 
-```markdown
-# 🎯 Learning Outcome
+Course: Python
 
-After completing this assignment, I gained practical experience with basic Python programming and learned how to:
+Assignment: 2
 
-- Make decisions using conditional statements
-- Store and manage data using dictionaries
-- Take input from users
-- Update dictionary values
-- Work with loops
-- Create and write to text files
-- Read data from text files
-- Execute Python programs using Visual Studio Code
+Topic: Python Basics
 
----
-
-# 👨‍💻 Author
-
-**Umair Khan**
-
-**Course:** Python
-
-**Assignment:** Tutedude Python Basics Assignment 2
-
----
-
-# ✅ Assignment Status
-
-**Completed**
-
-The repository contains the assignment document, Python program, text file, and complete 
+Student: Umair Khan
