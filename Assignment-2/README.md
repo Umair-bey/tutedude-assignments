@@ -312,6 +312,3 @@ Assignment-2/
 **Topic:** Python Basics
 
 **Student:** Umair Khan
-
-```
-```
