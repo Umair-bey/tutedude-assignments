@@ -24,22 +24,15 @@ This assignment covers basic Python programming concepts such as conditional sta
 
 ## 1. Grade Checker
 
-Take a score as input and print the grade according to the following conditions:
+The Grade Checker program takes a score as input and assigns a grade based on the given score range.
 
-| Score | Grade |
-| ----- | ----- |
-| 90+ | A |
-| 80–89 | B |
-| 70–79 | C |
-| 60–69 | D |
-| Below 60 | F |
+### 📝 Take a Score as Input
 
-Take a score as input:
-
+```python
 score = int(input("Enter your score: "))
+```
 
-Check the grade using if-elif-else:
-
+🔀 Check the Grade Using if-elif-else
 if score >= 90:
     print("Grade: A")
 elif score >= 80:
@@ -50,25 +43,20 @@ elif score >= 60:
     print("Grade: D")
 else:
     print("Grade: F")
-
-Example output:
-
+💻 Example Output
 Enter your score: 85
 Grade: B
-2. Student Grades
+👨‍🎓 2. Student Grades
 
-Create a dictionary to store student names and their grades:
+The Student Grades program uses a Python dictionary to store student names and their grades.
 
+📦 Create a Dictionary
 students = {}
-
-Add a new student and grade:
-
+➕ Add a New Student and Grade
 name = input("Enter student name: ")
 grade = input("Enter grade: ")
 students[name] = grade
-
-Update an existing student's grade:
-
+🔄 Update an Existing Student's Grade
 name = input("Enter student name: ")
 
 if name in students:
@@ -77,19 +65,15 @@ if name in students:
     print("Grade updated successfully.")
 else:
     print("Student not found.")
-
-Print all student grades:
-
+📋 Print All Student Grades
 for name, grade in students.items():
     print(name, ":", grade)
-
-Example output:
-
+💻 Example Output
 Student Grades:
 Umair : A
 Rahul : B
 Aman : A
-Concepts Used
+📚 Concepts Used
 Dictionary
 Dictionary keys and values
 if-elif-else
@@ -97,24 +81,19 @@ in operator
 items()
 for loop
 User input
-3. Write to a File
+📄 3. Write to a File
 
-Create or open a text file in write mode:
+This task demonstrates basic Python file handling by creating a text file and writing content into it.
 
+📂 Create or Open a Text File in Write Mode
 file = open("student.txt", "w")
-
-Write content into the file:
-
+✍️ Write Content into the File
 file.write("This is my Tutedude assignment.\n")
 file.write("I am learning Python programming.\n")
 file.write("This file was created using Python.")
-
-Close the file:
-
+🔒 Close the File
 file.close()
-
-Complete code:
-
+🧩 Complete Code
 file = open("student.txt", "w")
 
 file.write("This is my Tutedude assignment.\n")
@@ -124,41 +103,28 @@ file.write("This file was created using Python.")
 file.close()
 
 print("Content written to the file successfully.")
-
-Expected output:
-
+💻 Expected Output
 Content written to the file successfully.
-
-The program creates a file named:
-
+📁 File Created
 student.txt
-
-File content:
-
+📖 File Content
 This is my Tutedude assignment.
 I am learning Python programming.
 This file was created using Python.
-4. Read from a File
+📖 4. Read from a File
 
-Open the file in read mode:
+This task demonstrates how to open an existing text file, read its contents, and display them.
 
+📂 Open the File in Read Mode
 file = open("student.txt", "r")
-
-Read the contents of the file:
-
+📖 Read the Contents of the File
 content = file.read()
-
-Display the file contents:
-
+🖥️ Display the File Contents
 print("File Content:")
 print(content)
-
-Close the file:
-
+🔒 Close the File
 file.close()
-
-Complete code:
-
+🧩 Complete Code
 file = open("student.txt", "r")
 
 content = file.read()
@@ -167,9 +133,7 @@ print("File Content:")
 print(content)
 
 file.close()
-
-Expected output:
-
+💻 Expected Output
 File Content:
 This is my Tutedude assignment.
 I am learning Python programming.
@@ -198,10 +162,10 @@ assignment1.py	Python program used for the assignment tasks
 student.txt	Text file created and used during the file-writing and file-reading tasks
 README.md	Documentation and overview of the assignment
 🛠️ Technologies Used
-Python
-Visual Studio Code
-Git
-GitHub
+🐍 Python
+💻 Visual Studio Code
+🔧 Git
+🐙 GitHub
 🎯 Learning Outcome
 
 After completing this assignment, I practiced:
