@@ -55,6 +55,8 @@ Example:
 ```text
 Enter your score: 85
 Grade: B
+```text
+
 👨‍🎓 Assignment 2 – Student Grades
 
 The Student Grades program uses a Python dictionary to store student names and their grades.
