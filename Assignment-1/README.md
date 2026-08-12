@@ -219,5 +219,3 @@ Hello, Linux!
 **Topic:** Linux Basics
 
 **Student:** Umair Khan
-
-```
