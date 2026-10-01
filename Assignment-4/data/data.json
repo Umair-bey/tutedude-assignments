@@ -1,6 +1,6 @@
-[
-  {"id": 1, "name": "Priyanshu", "role": "DevOps Engineer"},
-  {"id": 2, "name": "Umair Khan", "role": "Tutedude Student"},
-  {"id": 3, "name": "Alice", "role": "Developer"},
-  {"id": 4, "name": "Bob", "role": "Designer"}
-]
+{
+  "message": "Hello from API - Updated in main branch",
+  "version": 3,
+  "items": ["main_item_1"],
+  "updated_by": "main"
+}
