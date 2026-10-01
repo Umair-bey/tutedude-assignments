@@ -12,10 +12,14 @@
         button:hover { background: #1e7e34; }
         .nav { margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; }
         .nav a { color: #007bff; text-decoration: none; }
+        .error { color: #b00020; background: #ffe6e6; padding: 12px; border-radius: 4px; margin-top: 20px; }
     </style>
 </head>
 <body>
     <h1>Add To-Do Item</h1>
+    {% if error %}
+    <div class="error">Error: {{ error }}</div>
+    {% endif %}
     <form action="/submittodotitem" method="POST">
         <label for="itemName">Item Name:</label>
         <input type="text" id="itemName" name="itemName" placeholder="Enter item name" required>

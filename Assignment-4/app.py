@@ -62,9 +62,30 @@ def success():
     """Success page shown after form submission."""
     return render_template('success.html')
 
+<<<<<<< HEAD
 @app.route('/todo')
 def todo():
     return render_template('todo.html')
+=======
+@app.route('/submittodotitem', methods=['POST'])
+def submit_todo_item():
+    """Handle To-Do form submission and store in MongoDB."""
+    try:
+        item_name = request.form.get('itemName')
+        item_description = request.form.get('itemDescription')
+
+        if not item_name or not item_description:
+            raise ValueError("Item Name and Item Description are required.")
+
+        collection.insert_one({
+            'itemName': item_name,
+            'itemDescription': item_description
+        })
+
+        return redirect(url_for('todo'))
+    except Exception as e:
+        return render_template('todo.html', error=str(e))
+>>>>>>> master_2
 
 if __name__ == '__main__':
     app.run(debug=True)
