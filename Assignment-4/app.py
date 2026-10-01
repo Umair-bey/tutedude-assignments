@@ -62,11 +62,9 @@ def success():
     """Success page shown after form submission."""
     return render_template('success.html')
 
-<<<<<<< HEAD
 @app.route('/todo')
 def todo():
     return render_template('todo.html')
-=======
 @app.route('/submittodotitem', methods=['POST'])
 def submit_todo_item():
     """Handle To-Do form submission and store in MongoDB."""
@@ -85,7 +83,6 @@ def submit_todo_item():
         return redirect(url_for('todo'))
     except Exception as e:
         return render_template('todo.html', error=str(e))
->>>>>>> master_2
 
 if __name__ == '__main__':
     app.run(debug=True)
