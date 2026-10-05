@@ -1,12 +1,3 @@
-# 📝 Root README.md — Same Style as Before, Just Add Assignment 4
-
-Here's your updated root README keeping the **exact same structure and style** — only adding Assignment 4 to the existing sections.
-
----
-
-## 📋 START COPY
-
-```markdown
 # Tutedude Assignments
 
 This repository contains my assignments and practical work completed during the Tutedude course.
