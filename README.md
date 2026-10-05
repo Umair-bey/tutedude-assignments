@@ -50,6 +50,7 @@ tutedude-assignments/
     ├── requirements.txt
     ├── .gitignore
     ├── UmairKhan_Assignment4_GitGitHub.pdf
+    ├── UmairKhan_Assignment4_GitGitHub.docx
     ├── data/
     ├── templates/
     ├── static/
