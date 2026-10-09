@@ -12,6 +12,7 @@ This repository contains my assignments and practical work completed during the 
 | [Assignment 2](./Assignment-2/) | Python Basics | ✅ Completed |
 | [Assignment 3](./Assignment-3/) | Flask & MongoDB (REST APIs) | ✅ Completed |
 | [Assignment 4](./Assignment-4/) | Git & GitHub | ✅ Completed |
+| [Assignment 5](./Assignment-5/) | Docker (Node.js + Flask) | ✅ Completed |
 
 ---
 
@@ -44,17 +45,34 @@ tutedude-assignments/
 │   ├── templates/
 │   └── screenshots/
 │
-└── Assignment-4/
+├── Assignment-4/
+│   ├── README.md
+│   ├── app.py
+│   ├── requirements.txt
+│   ├── .gitignore
+│   ├── UmairKhan_Assignment4_GitGitHub.pdf
+│   ├── UmairKhan_Assignment4_GitGitHub.docx
+│   ├── data/
+│   ├── templates/
+│   ├── static/
+│   └── screenshots/
+│
+└── Assignment-5/
     ├── README.md
-    ├── app.py
-    ├── requirements.txt
+    ├── docker-compose.yml
     ├── .gitignore
-    ├── UmairKhan_Assignment4_GitGitHub.pdf
-    ├── UmairKhan_Assignment4_GitGitHub.docx
-    ├── data/
-    ├── templates/
-    ├── static/
-    └── screenshots/
+    ├── documentation.docx
+    ├── documentation.pdf
+    ├── backend/
+    │   ├── app.py
+    │   ├── requirements.txt
+    │   └── Dockerfile
+    └── frontend/
+        ├── app.js
+        ├── package.json
+        ├── Dockerfile
+        └── views/
+            └── form.ejs
 ```
 
 ---
@@ -177,16 +195,65 @@ The fourth assignment focuses on practising the complete Git workflow — SSH se
 
 ---
 
+## 🐳 Assignment 5 — Docker (Node.js + Flask)
+
+The fifth assignment focuses on containerizing a two-service web application using Docker and Docker Compose.
+
+### Topics Covered
+- Writing custom Dockerfiles for Node.js and Python applications
+- Multi-container orchestration with `docker-compose.yml`
+- Container-to-container communication over a user-defined bridge network
+- Docker's internal DNS resolution using service names as hostnames
+- Environment variables for dynamic configuration
+- Publishing images to Docker Hub
+- Deploying separate services on Render without compose
+
+### Architecture
+- **Frontend:** Node.js + Express (port 3000) — serves the HTML form
+- **Backend:** Flask (port 5000) — receives form data and returns JSON
+- **Network:** Both services connected via a user-defined Docker bridge network (`app-network`)
+- **Communication:** Frontend reaches backend using the Docker service name `backend` as hostname
+
+### Docker Hub Images
+- Frontend → [umairkhan2026/node-frontend](https://hub.docker.com/r/umairkhan2026/node-frontend)
+- Backend → [umairkhan2026/flask-backend](https://hub.docker.com/r/umairkhan2026/flask-backend)
+
+### Live Demo (Deployed on Render)
+
+| Service | URL |
+|---------|-----|
+| Frontend | https://node-frontend-umair.onrender.com |
+| Backend (health check) | https://flask-backend-umair.onrender.com |
+
+> ⚠️ Free tier: services sleep after 15 min of inactivity. First request may take 30–60s to wake up.
+
+### Run Locally
+
+```bash
+git clone https://github.com/Umair-bey/tutedude-assignments.git
+cd tutedude-assignments/Assignment-5
+docker compose up --build
+```
+
+Access: http://localhost:3000
+
+**Documentation:** [documentation.docx](./Assignment-5/documentation.docx)
+
+👉 [View Assignment 5 →](./Assignment-5/)
+
+---
+
 ## 📊 Progress
 
-**Assignments Completed:** 4  
-**Total Assignments:** 4
+**Assignments Completed:** 5  
+**Total Assignments:** 5
 
 ```text
 Assignment 1  ████████████████████  ✅
 Assignment 2  ████████████████████  ✅
 Assignment 3  ████████████████████  ✅
 Assignment 4  ████████████████████  ✅
+Assignment 5  ████████████████████  ✅
 ```
 
 ---
@@ -200,6 +267,11 @@ Assignment 4  ████████████████████  ✅
 - MongoDB Atlas
 - PyMongo
 - HTML / CSS
+- Node.js
+- Express
+- Docker
+- Docker Compose
+- Docker Hub
 - Render (deployment)
 - Visual Studio Code
 - Git
@@ -212,3 +284,7 @@ Assignment 4  ████████████████████  ✅
 **Umair Khan**
 
 DevOps Course — Tutedude
+```
+
+
+Upload `Docker_UmairKhan.zip` to the Tutedude portal. 🚀
