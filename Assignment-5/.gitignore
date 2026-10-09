@@ -1,0 +1,19 @@
+﻿# Node
+node_modules/
+npm-debug.log
+.env
+
+# Python
+__pycache__/
+*.pyc
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
