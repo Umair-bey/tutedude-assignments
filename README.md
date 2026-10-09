@@ -212,9 +212,3 @@ Assignment 4  ████████████████████  ✅
 **Umair Khan**
 
 DevOps Course — Tutedude
-
-<<<<<<< HEAD
-=======
-
-Then ZIP + submit! 🚀
->>>>>>> e5800bd6a09816cb6d8e263e684fb561cc1e4cb5
