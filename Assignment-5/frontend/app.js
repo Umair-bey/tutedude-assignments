@@ -10,6 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const BACKEND_URL = process.env.BACKEND_URL || 'http://backend:5000';
+const PORT = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
   res.render('form');
@@ -24,6 +25,6 @@ app.post('/submit', async (req, res) => {
   }
 });
 
-app.listen(3000, '0.0.0.0', () => {
-  console.log('Frontend running on port 3000');
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Frontend running on port ${PORT}`);
 });
