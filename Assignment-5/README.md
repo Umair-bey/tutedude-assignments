@@ -10,6 +10,25 @@ A two-service web application: a **Node.js + Express frontend** serving an HTML 
 
 ---
 
+## 🌐 Live Demo (Deployed on Render)
+
+| Service | URL |
+|---------|-----|
+| Frontend | https://node-frontend-umair.onrender.com |
+| Backend (health check) | https://flask-backend-umair.onrender.com |
+
+> ⚠️ **Free tier note:** Services sleep after 15 minutes of inactivity. First request after sleep may take 30–60 seconds to wake up. If the form doesn't submit on the first try, wake the backend by opening its URL, then retry.
+
+### Render Deployment Notes
+
+Render does not support `docker-compose.yml` — each service is deployed separately as a **Web Service** using the same repo but different Root Directories:
+- Backend → `Assignment-5/backend`
+- Frontend → `Assignment-5/frontend`
+
+The frontend connects to the backend via the environment variable `BACKEND_URL=https://flask-backend-umair.onrender.com`.
+
+---
+
 ## Tasks
 
 ### Task 1: Node.js Frontend
@@ -74,6 +93,7 @@ A two-service web application: a **Node.js + Express frontend** serving an HTML 
 - **Containerization:** Docker, Docker Compose
 - **Registry:** Docker Hub
 - **Orchestration:** Docker Compose (bridge network)
+- **Deployment:** Render (separate Web Services for frontend and backend)
 
 ---
 
@@ -160,3 +180,6 @@ docker run -p 5000:5000 umairkhan2026/flask-backend:latest
 - Docker's internal DNS resolution using service names as hostnames
 - Using environment variables to configure the backend URL dynamically
 - Publishing images to Docker Hub and maintaining clean repos with `.gitignore`
+- Deploying multi-service apps on Render (without compose) using Root Directories + environment variables
+```
+
