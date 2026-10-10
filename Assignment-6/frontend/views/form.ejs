@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AWS Deployment - Flask + Express</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; }
+    input, button { padding: 8px; font-size: 16px; }
+    ul { list-style: none; padding: 0; }
+    li { background: #f4f4f4; margin: 5px 0; padding: 8px; border-radius: 4px; }
+    .error { color: red; }
+  </style>
+</head>
+<body>
+  <h1>🚀 Flask + Express on AWS</h1>
+
+  <% if (error) { %>
+    <p class="error"><%= error %></p>
+  <% } %>
+
+  <form action="/add" method="POST">
+    <input type="text" name="name" placeholder="Enter an item" required />
+    <button type="submit">Add</button>
+  </form>
+
+  <h2>Items from Flask Backend:</h2>
+  <ul>
+    <% items.forEach(function(item) { %>
+      <li><%= item.id %>. <%= item.name %></li>
+    <% }); %>
+  </ul>
+</body>
+</html>
