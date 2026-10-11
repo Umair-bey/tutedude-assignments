@@ -13,6 +13,7 @@ This repository contains my assignments and practical work completed during the 
 | [Assignment 3](./Assignment-3/) | Flask & MongoDB (REST APIs) | ✅ Completed |
 | [Assignment 4](./Assignment-4/) | Git & GitHub | ✅ Completed |
 | [Assignment 5](./Assignment-5/) | Docker (Node.js + Flask) | ✅ Completed |
+| [Assignment 6](./Assignment-6/) | AWS Deployment (EC2 + ECR + ECS) | ✅ Completed |
 
 ---
 
@@ -22,6 +23,7 @@ This repository contains my assignments and practical work completed during the 
 tutedude-assignments/
 │
 ├── README.md
+├── .gitignore
 │
 ├── Assignment-1/
 │   ├── README.md
@@ -57,22 +59,38 @@ tutedude-assignments/
 │   ├── static/
 │   └── screenshots/
 │
-└── Assignment-5/
+├── Assignment-5/
+│   ├── README.md
+│   ├── docker-compose.yml
+│   ├── .gitignore
+│   ├── documentation.docx
+│   ├── documentation.pdf
+│   ├── backend/
+│   │   ├── app.py
+│   │   ├── requirements.txt
+│   │   └── Dockerfile
+│   └── frontend/
+│       ├── app.js
+│       ├── package.json
+│       ├── Dockerfile
+│       └── views/
+│           └── form.ejs
+│
+└── Assignment-6/
     ├── README.md
-    ├── docker-compose.yml
-    ├── .gitignore
-    ├── documentation.docx
-    ├── documentation.pdf
+    ├── AWS_UmairKhan.docx
+    ├── AWS_UmairKhan.pdf
     ├── backend/
     │   ├── app.py
     │   ├── requirements.txt
     │   └── Dockerfile
-    └── frontend/
-        ├── app.js
-        ├── package.json
-        ├── Dockerfile
-        └── views/
-            └── form.ejs
+    ├── frontend/
+    │   ├── app.js
+    │   ├── package.json
+    │   ├── Dockerfile
+    │   └── views/
+    │       └── form.ejs
+    └── screenshots/
 ```
 
 ---
@@ -181,7 +199,7 @@ The fourth assignment focuses on practising the complete Git workflow — SSH se
 ### Routes
 
 | Route | Method | Purpose |
-|-------|--------|---------|
+|---|---|---|
 | `/` | GET | Home form |
 | `/api` | GET | Returns JSON from `data/data.json` |
 | `/todo` | GET | To-Do form with 5 fields |
@@ -221,7 +239,7 @@ The fifth assignment focuses on containerizing a two-service web application usi
 ### Live Demo (Deployed on Render)
 
 | Service | URL |
-|---------|-----|
+|---|---|
 | Frontend | https://node-frontend-umair.onrender.com |
 | Backend (health check) | https://flask-backend-umair.onrender.com |
 
@@ -243,10 +261,51 @@ Access: http://localhost:3000
 
 ---
 
+## ☁️ Assignment 6 — AWS Deployment
+
+The sixth assignment focuses on deploying a full-stack application (Flask backend + Express frontend) on AWS across three deployment architectures.
+
+### Topics Covered
+- EC2 provisioning (Ubuntu 24.04, `t3.micro`, free tier)
+- Security groups — inbound AND outbound rules
+- SSH access from Windows + `.pem` key permissions
+- Linux process management with `nohup`
+- Cross-server communication over public IP
+- Docker image build + push to **Amazon ECR**
+- Custom **VPC** with 2 public subnets, Internet Gateway, route tables
+- **ECS Fargate** cluster, task definitions, and services
+- Cost awareness — stopping services when not in use
+
+### Architecture Overview
+
+| Task | Deployment Pattern | Live URL |
+|---|---|---|
+| Task 1 | Single EC2 (both apps) | http://65.2.142.82:3000 |
+| Task 2 | Two EC2s (backend + frontend) | http://15.206.205.213:3000 |
+| Task 3 | Docker + ECR + ECS Fargate + VPC | http://13.201.96.116:3000 |
+
+> ⚠️ Instances/services stopped after verification to avoid charges. Restart to access.
+
+### Key Details
+
+- **Backend:** Flask, port 5000
+- **Frontend:** Express, port 3000
+- **ECR Repos:** `flask-backend`, `express-frontend`
+- **VPC:** `tutede-vpc-vpc` (`10.0.0.0/16`, 2 public subnets)
+- **ECS Cluster:** `tutede-cluster` (Fargate only)
+- **Task Definitions:** `tutede-backend-task:1`, `tutede-frontend-task:2`
+- **Services:** `tutede-backend-service`, `tutede-frontend-service`
+
+**Documentation:** [AWS_UmairKhan.pdf](./Assignment-6/AWS_UmairKhan.pdf)
+
+👉 [View Assignment 6 →](./Assignment-6/)
+
+---
+
 ## 📊 Progress
 
-**Assignments Completed:** 5  
-**Total Assignments:** 5
+**Assignments Completed:** 6  
+**Total Assignments:** 6
 
 ```text
 Assignment 1  ████████████████████  ✅
@@ -254,6 +313,7 @@ Assignment 2  ████████████████████  ✅
 Assignment 3  ████████████████████  ✅
 Assignment 4  ████████████████████  ✅
 Assignment 5  ████████████████████  ✅
+Assignment 6  ████████████████████  ✅
 ```
 
 ---
@@ -272,6 +332,7 @@ Assignment 5  ████████████████████  ✅
 - Docker
 - Docker Compose
 - Docker Hub
+- AWS (EC2, ECR, ECS Fargate, VPC)
 - Render (deployment)
 - Visual Studio Code
 - Git
@@ -284,7 +345,3 @@ Assignment 5  ████████████████████  ✅
 **Umair Khan**
 
 DevOps Course — Tutedude
-```
-
-
-Upload `Docker_UmairKhan.zip` to the Tutedude portal. 🚀
