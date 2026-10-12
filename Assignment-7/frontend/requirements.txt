@@ -1,0 +1,4 @@
+@'
+flask
+requests
+'@ | Set-Content frontend\requirements.txt

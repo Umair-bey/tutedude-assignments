@@ -1,0 +1,23 @@
+@'
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Flask + Express on Kubernetes</title>
+  <style>
+    body { font-family: Arial; text-align: center; margin-top: 50px; background: #f4f4f9; }
+    .card { background: white; padding: 30px; border-radius: 10px;
+            display: inline-block; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    h1 { color: #326ce5; }
+    .msg { color: #2e7d32; font-size: 20px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Frontend (Flask) on Kubernetes 🚀</h1>
+    <p>Backend says:</p>
+    <p class="msg">{{ data.message }}</p>
+    <p>Status: {{ data.status }}</p>
+  </div>
+</body>
+</html>
+'@ | Set-Content frontend\templates\index.html
