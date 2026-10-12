@@ -1,4 +1,3 @@
-@'
 const express = require('express');
 const cors = require('cors');
 
@@ -16,4 +15,3 @@ app.get('/api/health', (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Backend running on port ${PORT}`));
-'@ | Set-Content backend\server.js

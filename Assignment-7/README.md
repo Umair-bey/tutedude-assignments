@@ -1,4 +1,3 @@
-@'
 # Assignment 7 - Kubernetes Deployment
 
 Deploy a full-stack app (Flask frontend + Express backend) on Minikube.
