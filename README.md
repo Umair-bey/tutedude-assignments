@@ -14,6 +14,7 @@ This repository contains my assignments and practical work completed during the 
 | [Assignment 4](./Assignment-4/) | Git & GitHub | ✅ Completed |
 | [Assignment 5](./Assignment-5/) | Docker (Node.js + Flask) | ✅ Completed |
 | [Assignment 6](./Assignment-6/) | AWS Deployment (EC2 + ECR + ECS) | ✅ Completed |
+| [Assignment 7](./Assignment-7/) | Kubernetes Deployment (Minikube) | ✅ Completed |
 
 ---
 
@@ -76,20 +77,40 @@ tutedude-assignments/
 │       └── views/
 │           └── form.ejs
 │
-└── Assignment-6/
+├── Assignment-6/
+│   ├── README.md
+│   ├── AWS_UmairKhan.docx
+│   ├── AWS_UmairKhan.pdf
+│   ├── backend/
+│   │   ├── app.py
+│   │   ├── requirements.txt
+│   │   └── Dockerfile
+│   ├── frontend/
+│   │   ├── app.js
+│   │   ├── package.json
+│   │   ├── Dockerfile
+│   │   └── views/
+│   │       └── form.ejs
+│   └── screenshots/
+│
+└── Assignment-7/
     ├── README.md
-    ├── AWS_UmairKhan.docx
-    ├── AWS_UmairKhan.pdf
+    ├── Kubernetes_UmairKhan.docx
+    ├── Kubernetes_UmairKhan.docx.pdf
     ├── backend/
+    │   ├── Dockerfile
+    │   ├── deployment.yaml
+    │   ├── service.yaml
+    │   ├── package.json
+    │   └── server.js
+    ├── frontend/
+    │   ├── Dockerfile
+    │   ├── deployment.yaml
+    │   ├── service.yaml
     │   ├── app.py
     │   ├── requirements.txt
-    │   └── Dockerfile
-    ├── frontend/
-    │   ├── app.js
-    │   ├── package.json
-    │   ├── Dockerfile
-    │   └── views/
-    │       └── form.ejs
+    │   └── templates/
+    │       └── index.html
     └── screenshots/
 ```
 
@@ -302,10 +323,90 @@ The sixth assignment focuses on deploying a full-stack application (Flask backen
 
 ---
 
+## ☸️ Assignment 7 — Kubernetes Deployment (Minikube)
+
+The seventh assignment focuses on deploying a full-stack application (Flask frontend + Express backend) on a local **Kubernetes cluster** using **Minikube**.
+
+### Topics Covered
+- Containerizing a Node.js backend and a Python/Flask frontend with custom Dockerfiles
+- Local Kubernetes cluster provisioning with Minikube (Docker driver)
+- Building images **inside** Minikube's Docker daemon with `minikube image build`
+- Kubernetes **Deployments** for replica management (2 replicas each)
+- Kubernetes **Services** — `ClusterIP` (internal) and `NodePort` (external)
+- Inter-pod communication via Kubernetes **DNS service discovery**
+- Environment variable injection through Deployment manifests
+- Kubernetes Dashboard for visual cluster monitoring
+- Debugging malformed files at the byte level
+- DevOps safety net: custom Git **pre-commit hook** to block corrupted commits
+
+### Architecture
+
+| Component | Technology | Port | Service Type | Replicas |
+|---|---|---|---|---|
+| Frontend | Flask (Python 3.10) | 5000 | NodePort | 2 |
+| Backend | Express (Node.js 18) | 3000 | ClusterIP | 2 |
+
+**Communication flow:**
+
+```
+Browser → frontend-service (NodePort:5000) → Flask Pod
+                                              ↓
+                            http://backend-service:3000
+                                              ↓
+                            backend-service (ClusterIP) → Express Pod
+```
+
+Kubernetes internal DNS resolves `backend-service` to the correct pod IP — no hardcoded IPs.
+
+### Key Commands
+
+```powershell
+# Start cluster
+minikube start --driver=docker
+
+# Build images inside Minikube
+cd backend ; minikube image build -t backend:v1 . ; cd ..
+cd frontend ; minikube image build -t frontend:v1 . ; cd ..
+
+# Deploy
+kubectl apply -f backend/deployment.yaml
+kubectl apply -f backend/service.yaml
+kubectl apply -f frontend/deployment.yaml
+kubectl apply -f frontend/service.yaml
+
+# Verify
+kubectl get pods
+kubectl get svc
+kubectl get deployments
+kubectl get all
+
+# Access
+minikube service frontend-service --url
+
+# Dashboard
+minikube dashboard
+```
+
+> ⚠️ On Windows, `minikube docker-env | Invoke-Expression` fails with an SSH agent error — use `minikube image build` instead.
+
+> ⚠️ Keep the terminal running `minikube service frontend-service --url` open — Minikube's Docker driver on Windows holds the tunnel through it.
+
+### Deployment Result
+
+- **4 pods Running** (2 backend + 2 frontend), 0 restarts
+- **2 Services** active — `backend-service` (ClusterIP), `frontend-service` (NodePort)
+- **2 Deployments** at 2/2 replicas
+
+**Documentation:** [Kubernetes_UmairKhan.docx](./Assignment-7/Kubernetes_UmairKhan.docx)
+
+👉 [View Assignment 7 →](./Assignment-7/)
+
+---
+
 ## 📊 Progress
 
-**Assignments Completed:** 6  
-**Total Assignments:** 6
+**Assignments Completed:** 7  
+**Total Assignments:** 7
 
 ```text
 Assignment 1  ████████████████████  ✅
@@ -314,6 +415,7 @@ Assignment 3  ████████████████████  ✅
 Assignment 4  ████████████████████  ✅
 Assignment 5  ████████████████████  ✅
 Assignment 6  ████████████████████  ✅
+Assignment 7  ████████████████████  ✅
 ```
 
 ---
@@ -333,6 +435,8 @@ Assignment 6  ████████████████████  ✅
 - Docker Compose
 - Docker Hub
 - AWS (EC2, ECR, ECS Fargate, VPC)
+- Kubernetes (Minikube)
+- kubectl
 - Render (deployment)
 - Visual Studio Code
 - Git
