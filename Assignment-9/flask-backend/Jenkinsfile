@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/Urmair-bey/YOUR-FLASK-REPO.git'
+            }
+        }
+        stage('Install Dependencies') {
+            steps {
+                sh 'pip3 install -r requirements.txt'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'pm2 restart flask-app || pm2 start app.py --name flask-app --interpreter python3'
+            }
+        }
+    }
+}

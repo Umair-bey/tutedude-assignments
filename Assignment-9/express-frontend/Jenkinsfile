@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/Urmair-bey/YOUR-EXPRESS-REPO.git'
+            }
+        }
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm install'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'pm2 restart express-app || pm2 start server.js --name express-app'
+            }
+        }
+    }
+}
