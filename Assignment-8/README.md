@@ -186,7 +186,8 @@ ECS does not automatically detect when a `:latest` tag is overwritten. You must 
 - [AWS ECR Documentation](https://docs.aws.amazon.com/ecr/)
 - [Terraform Docs](https://developer.hashicorp.com/terraform/docs)
 
-## 👤 Author
+## 👨‍💻 Author
 
-**Umair Khan** 
-DevOps Course— Tutedude
+**Umair Khan**
+
+DevOps Course — Tutedude
