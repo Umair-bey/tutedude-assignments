@@ -15,6 +15,7 @@ This repository contains my assignments and practical work completed during the 
 | [Assignment 5](./Assignment-5/) | Docker (Node.js + Flask) | ✅ Completed |
 | [Assignment 6](./Assignment-6/) | AWS Deployment (EC2 + ECR + ECS) | ✅ Completed |
 | [Assignment 7](./Assignment-7/) | Kubernetes Deployment (Minikube) | ✅ Completed |
+| [Assignment 8](./Assignment-8/) | Terraform (AWS Provisioning) | ✅ Completed |
 
 ---
 
@@ -93,25 +94,48 @@ tutedude-assignments/
 │   │       └── form.ejs
 │   └── screenshots/
 │
-└── Assignment-7/
+├── Assignment-7/
+│   ├── README.md
+│   ├── Kubernetes_UmairKhan.docx
+│   ├── Kubernetes_UmairKhan.docx.pdf
+│   ├── backend/
+│   │   ├── Dockerfile
+│   │   ├── deployment.yaml
+│   │   ├── service.yaml
+│   │   ├── package.json
+│   │   └── server.js
+│   ├── frontend/
+│   │   ├── Dockerfile
+│   │   ├── deployment.yaml
+│   │   ├── service.yaml
+│   │   ├── app.py
+│   │   ├── requirements.txt
+│   │   └── templates/
+│   │       └── index.html
+│   └── screenshots/
+│
+└── Assignment-8/
     ├── README.md
-    ├── Kubernetes_UmairKhan.docx
-    ├── Kubernetes_UmairKhan.docx.pdf
-    ├── backend/
-    │   ├── Dockerfile
-    │   ├── deployment.yaml
-    │   ├── service.yaml
-    │   ├── package.json
-    │   └── server.js
-    ├── frontend/
-    │   ├── Dockerfile
-    │   ├── deployment.yaml
-    │   ├── service.yaml
-    │   ├── app.py
-    │   ├── requirements.txt
-    │   └── templates/
-    │       └── index.html
-    └── screenshots/
+    ├── Terraform_UmairKhan.docx
+    ├── part1-single-ec2/
+    │   ├── main.tf
+    │   └── user_data.sh
+    ├── part2-two-ec2s/
+    │   ├── main.tf
+    │   ├── backend.sh
+    │   └── frontend.sh
+    └── part3-ecs-ecr/
+        ├── main.tf
+        ├── variables.tf
+        ├── outputs.tf
+        ├── backend/
+        │   ├── app.py
+        │   ├── requirements.txt
+        │   └── Dockerfile
+        └── frontend/
+            ├── server.js
+            ├── package.json
+            └── Dockerfile
 ```
 
 ---
@@ -403,10 +427,69 @@ minikube dashboard
 
 ---
 
+## 🏗️ Assignment 8 — Terraform (AWS Provisioning)
+
+The eighth assignment focuses on using **Terraform** (Infrastructure as Code) to provision AWS infrastructure across three distinct architectural patterns.
+
+### Topics Covered
+- Writing declarative HCL to provision AWS resources
+- Terraform State Management (`terraform init`, `plan`, `apply`, `destroy`)
+- Custom **VPC** networking — Subnets, Route Tables, Internet Gateways, and Security Groups
+- Bash Scripting for Automation — using `user_data` to bootstrap EC2 instances
+- Docker & **AWS ECR** — Building images, tagging, and pushing to Elastic Container Registry
+- **AWS ECS Fargate** — Running serverless containers without managing underlying servers
+- **Application Load Balancer** — Routing traffic based on URL paths (`/` vs `/api/*`)
+- Handling Terraform template literal conflicts and forcing task definition replacements
+
+### Architecture Overview
+
+| Part | Deployment Pattern | Infrastructure |
+|---|---|---|
+| Part 1 | Single EC2 (both apps) | 1 EC2 instance, 1 Security Group |
+| Part 2 | Two EC2s (Custom VPC) | 1 VPC, 2 EC2s, Subnets, IGW, Route Tables |
+| Part 3 | Docker + ECR + ECS Fargate + ALB | ECR Repos, ECS Cluster, Fargate Tasks, ALB, IAM Roles |
+
+> ⚠️ All AWS resources were destroyed via `terraform destroy` after verification to prevent unnecessary charges.
+
+### Key Details
+
+- **Backend:** Flask, port 5000
+- **Frontend:** Express, port 3000
+- **Terraform Version:** v1.9.8 (windows_amd64)
+- **ECR Repos:** `assignment8-p3-backend`, `assignment8-p3-frontend`
+- **ECS Cluster:** `assignment8-p3-cluster`
+- **Load Balancer:** `assignment8-p3-alb`
+
+### Key Commands
+
+```powershell
+# Initialize Terraform
+terraform init
+
+# Validate and Plan
+terraform validate
+terraform plan
+
+# Deploy Infrastructure
+terraform apply --auto-approve
+
+# Force update ECS if Docker image tags are updated
+terraform apply -replace="aws_ecs_task_definition.backend" -replace="aws_ecs_task_definition.frontend" --auto-approve
+
+# Destroy Infrastructure
+terraform destroy --auto-approve
+```
+
+**Documentation:** [Terraform_UmairKhan.docx](./Assignment-8/Terraform_UmairKhan.docx)
+
+👉 [View Assignment 8 →](./Assignment-8/)
+
+---
+
 ## 📊 Progress
 
-**Assignments Completed:** 7  
-**Total Assignments:** 7
+**Assignments Completed:** 8  
+**Total Assignments:** 8
 
 ```text
 Assignment 1  ████████████████████  ✅
@@ -416,6 +499,7 @@ Assignment 4  ████████████████████  ✅
 Assignment 5  ████████████████████  ✅
 Assignment 6  ████████████████████  ✅
 Assignment 7  ████████████████████  ✅
+Assignment 8  ████████████████████  ✅
 ```
 
 ---
@@ -434,7 +518,8 @@ Assignment 7  ████████████████████  ✅
 - Docker
 - Docker Compose
 - Docker Hub
-- AWS (EC2, ECR, ECS Fargate, VPC)
+- AWS (EC2, ECR, ECS Fargate, VPC, ALB)
+- Terraform
 - Kubernetes (Minikube)
 - kubectl
 - Render (deployment)
