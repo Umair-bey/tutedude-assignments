@@ -188,4 +188,5 @@ ECS does not automatically detect when a `:latest` tag is overwritten. You must 
 
 ## 👤 Author
 
-**Umair Khan** — Tutedude DevOps Course
+**Umair Khan** 
+DevOps Course— Tutedude
