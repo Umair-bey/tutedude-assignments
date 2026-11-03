@@ -27,3 +27,7 @@ Thumbs.db
 *.tfstate
 *.tfstate.backup
 *.tfvars
+
+# Ignore AWS Keys
+*.pem
+*.ppk
