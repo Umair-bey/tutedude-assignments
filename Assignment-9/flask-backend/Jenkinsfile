@@ -8,12 +8,12 @@ pipeline {
         }
         stage('Install Dependencies') {
             steps {
-                sh 'pip3 install -r requirements.txt --break-system-packages'
+                sh 'cd Assignment-9/flask-backend && pip3 install -r requirements.txt --break-system-packages'
             }
         }
         stage('Deploy') {
             steps {
-                sh 'pm2 restart flask-app || pm2 start app.py --name flask-app --interpreter python3'
+                sh 'cd Assignment-9/flask-backend && (pm2 restart flask-app || pm2 start app.py --name flask-app --interpreter python3)'
             }
         }
     }
