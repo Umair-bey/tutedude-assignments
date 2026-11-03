@@ -33,6 +33,9 @@ This project demonstrates the deployment of a Flask backend and an Express front
 6. Added a 1GB Swap file to the EC2 instance to prevent memory crashes.
 
 ### Screenshots
+**EC2 Instance Running:**
+![EC2 Instance](screenshots/ec2-instance.png)
+
 **PM2 Status:**
 ![PM2 Status](screenshots/pm2-status.png)
 
