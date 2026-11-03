@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/Urmair-bey/YOUR-EXPRESS-REPO.git'
+                git branch: 'main', url: 'https://github.com/Umair-bey/tutedude-assignments.git'
             }
         }
         stage('Install Dependencies') {
