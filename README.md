@@ -16,6 +16,7 @@ This repository contains my assignments and practical work completed during the 
 | [Assignment 6](./Assignment-6/) | AWS Deployment (EC2 + ECR + ECS) | ✅ Completed |
 | [Assignment 7](./Assignment-7/) | Kubernetes Deployment (Minikube) | ✅ Completed |
 | [Assignment 8](./Assignment-8/) | Terraform (AWS Provisioning) | ✅ Completed |
+| [Assignment 9](./Assignment-9/) | Jenkins CI/CD Pipeline | ✅ Completed |
 
 ---
 
@@ -114,28 +115,41 @@ tutedude-assignments/
 │   │       └── index.html
 │   └── screenshots/
 │
-└── Assignment-8/
+├── Assignment-8/
+│   ├── README.md
+│   ├── Terraform_UmairKhan.docx
+│   ├── part1-single-ec2/
+│   │   ├── main.tf
+│   │   └── user_data.sh
+│   ├── part2-two-ec2s/
+│   │   ├── main.tf
+│   │   ├── backend.sh
+│   │   └── frontend.sh
+│   └── part3-ecs-ecr/
+│       ├── main.tf
+│       ├── variables.tf
+│       ├── outputs.tf
+│       ├── backend/
+│       │   ├── app.py
+│       │   ├── requirements.txt
+│       │   └── Dockerfile
+│       └── frontend/
+│           ├── server.js
+│           ├── package.json
+│           └── Dockerfile
+│
+└── Assignment-9/
     ├── README.md
-    ├── Terraform_UmairKhan.docx
-    ├── part1-single-ec2/
-    │   ├── main.tf
-    │   └── user_data.sh
-    ├── part2-two-ec2s/
-    │   ├── main.tf
-    │   ├── backend.sh
-    │   └── frontend.sh
-    └── part3-ecs-ecr/
-        ├── main.tf
-        ├── variables.tf
-        ├── outputs.tf
-        ├── backend/
-        │   ├── app.py
-        │   ├── requirements.txt
-        │   └── Dockerfile
-        └── frontend/
-            ├── server.js
-            ├── package.json
-            └── Dockerfile
+    ├── architecture.md
+    ├── flask-backend/
+    │   ├── app.py
+    │   ├── requirements.txt
+    │   └── Jenkinsfile
+    ├── express-frontend/
+    │   ├── server.js
+    │   ├── package.json
+    │   └── Jenkinsfile
+    └── screenshots/
 ```
 
 ---
@@ -486,10 +500,42 @@ terraform destroy --auto-approve
 
 ---
 
+## 🚀 Assignment 9 — Jenkins CI/CD Pipeline
+
+The ninth assignment focuses on deploying a Flask backend and an Express frontend on a single AWS EC2 instance and automating the deployment process using Jenkins CI/CD pipelines.
+
+### Topics Covered
+- AWS EC2 provisioning (Ubuntu 24.04, `t3.micro`)
+- Installing and configuring Jenkins, Java 21, Node.js, and Python on Ubuntu
+- Process management using PM2
+- Creating Jenkins Declarative Pipelines using `Jenkinsfile`
+- Configuring Jenkins to pull code from GitHub via SCM
+- Setting up GitHub Webhooks to trigger pipelines automatically on code push
+- Handling memory constraints on free-tier instances using Swap files
+
+### Architecture Overview
+- **EC2 Instance:** Ubuntu 24.04 (`t3.micro`)
+- **Flask Backend:** Running on Port 5000 (managed by PM2)
+- **Express Frontend:** Running on Port 3000 (managed by PM2)
+- **CI/CD Tool:** Jenkins (Running on Port 8080)
+
+### Pipeline Flow
+1. Code is pushed to the GitHub repository (`main` branch).
+2. GitHub Webhook triggers the respective Jenkins pipeline.
+3. Jenkins checks out the code, installs dependencies (`pip install` / `npm install`), and restarts the applications using PM2.
+4. Updated apps are live on the EC2 public IP.
+
+### Screenshots
+*(See the [Assignment-9 README](./Assignment-9/README.md) for detailed screenshots and documentation).*
+
+👉 [View Assignment 9 →](./Assignment-9/)
+
+---
+
 ## 📊 Progress
 
-**Assignments Completed:** 8  
-**Total Assignments:** 8
+**Assignments Completed:** 9  
+**Total Assignments:** 9
 
 ```text
 Assignment 1  ████████████████████  ✅
@@ -500,6 +546,7 @@ Assignment 5  ████████████████████  ✅
 Assignment 6  ████████████████████  ✅
 Assignment 7  ████████████████████  ✅
 Assignment 8  ████████████████████  ✅
+Assignment 9  ████████████████████  ✅
 ```
 
 ---
@@ -522,6 +569,8 @@ Assignment 8  ████████████████████  ✅
 - Terraform
 - Kubernetes (Minikube)
 - kubectl
+- Jenkins (CI/CD)
+- PM2
 - Render (deployment)
 - Visual Studio Code
 - Git
