@@ -480,7 +480,7 @@ terraform apply -replace="aws_ecs_task_definition.backend" -replace="aws_ecs_tas
 terraform destroy --auto-approve
 ```
 
-**Documentation:** [Terraform_UmairKhan.docx](./Assignment-8/Terraform_UmairKhan.docx)
+**Documentation:** [Terraform (AWS Provisioning).docx](./Assignment-8/Terraform%20(AWS%20Provisioning).docx)
 
 👉 [View Assignment 8 →](./Assignment-8/)
 
